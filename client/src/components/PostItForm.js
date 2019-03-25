@@ -2,31 +2,73 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 class PostItForm extends React.Component {
-  state = {note: ''};
+  initialState = {
+    note: '',
+    color: 'yellow',
+    important: false,
+  }
+  state = {...this.initialState};
+
+  componentDidMount() {
+    if (this.props.id)
+      this.setState({...this.props, });
+  }
 
   handleSubmit = e => {
     e.preventDefault();
-    const {dispatch, id} = this.props;
-    const {note} = this.state;
-    const postit = {note, id};
+    const {dispatch} = this.props;
+    const {postit} = this.state;
     dispatch({type: 'ADD_POSTIT', postit});
     dispatch({type: 'INC_ID'});
     dispatch({type: 'TOGGLE_FORM'});
-    this.setState({note: ''});
+    // const func
   };
 
   handleChange = e => {
-    this.setState({note: e.target.value});
+    const { name, value, } = e.target;
+    this.setState({ [name]: value, });
   };
 
+  handleClickChange = e => {
+    this.setState({ important: !this.state.important })
+  }
+
   render() {
-    const {note} = this.state;
+    const { note, color, important } = this.props;
 
     return (
       <div>
-        <h3>New Post-It</h3>
         <form onSubmit={this.handleSubmit}>
-          <textarea type="textArea" value={note} onChange={this.handleChange} />
+          <textarea
+            type="textArea"
+            value={note}
+            onChange={this.handleChange}
+            label="Note"
+          />
+          <br />
+          <label>
+            Pick a color:
+            <select
+              name={color}
+              onChange={this.handleChange}
+              value={this.state.color}
+            >
+              <option value="green">Green</option>
+              <option value="purple">Purple</option>
+              <option value="blue">Blue</option>
+              <option value="pink">Pink</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Important:
+            <input
+              name={ important }
+              type="checkbox"
+              checked={this.state.important}
+              onChange={this.handleClickChange}
+            />
+          </label>
           <br />
           <input type="submit" value="Submit" />
         </form>
@@ -36,8 +78,8 @@ class PostItForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {id: state.nextId};
-};
+// const mapStateToProps = state => {
+//   return {id: state.nextId};
+// };
 
-export default connect(mapStateToProps)(PostItForm);
+export default connect()(PostItForm);
