@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { addPostIt, updatePostIt, } from '../reducers/postits'
 
 class PostItForm extends React.Component {
   initialState = {
@@ -17,11 +18,9 @@ class PostItForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const {dispatch} = this.props;
-    const {postit} = this.state;
-    dispatch({type: 'ADD_POSTIT', postit});
-    dispatch({type: 'INC_ID'});
-    dispatch({type: 'TOGGLE_FORM'});
-    // const func
+    const postit = this.state;
+    const func = this.props.id ? updatePostIt : addPostIt;
+    dispatch(func(postit));
   };
 
   handleChange = e => {
