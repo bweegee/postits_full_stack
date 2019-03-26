@@ -10,7 +10,7 @@ const App = () => (
   <Fragment>
     <Switch>
       <Route exact path="/" component={PostIts} />
-      <Route path="/postits" component={PostIts} />
+      <Route exact path="/postits" component={PostIts} />
     </Switch>
   </Fragment>
 );

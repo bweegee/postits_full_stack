@@ -5,7 +5,7 @@ import { addPostIt, updatePostIt, } from '../reducers/postits'
 class PostItForm extends React.Component {
   initialState = {
     note: '',
-    color: '#deff00',
+    color: 'yellow',
     important: false,
   }
   state = {...this.initialState};
@@ -79,9 +79,5 @@ class PostItForm extends React.Component {
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   return {id: state.nextId};
-// };
 
 export default connect()(PostItForm);
