@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const PostIt = ({note, color, important, dispatch}) => (
   <Container>
-    <NoiceDiv>
+    <NoiceDiv bg={color}>
       <h4>{note}</h4>
       <br />
     </NoiceDiv>
@@ -27,8 +27,23 @@ const NoiceDiv = styled.div`
   border: solid 1px black
   width: 233px;
   height: 233px;
-  background: ${props => props.color};
+  background: ${props => noteColor(props.bg)} !important;
   `;
+
+const noteColor = (bg) => {
+  switch(bg) {
+    case 'yellow':
+      return '#deff00';
+    case 'green':
+      return '#03ff00';
+    case 'purple':
+      return '#8500ff';
+    case 'blue':
+      return '#00cdff';
+    case 'pink':
+      return '#ff00bc';
+  }
+}
 
 const ButtDiv = styled.div`
   text-align: right;

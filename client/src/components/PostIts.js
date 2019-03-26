@@ -1,9 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import getPostIts from '../reducers/postits'
 import PostIt from './PostIt';
 import PostItForm from './PostItForm';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
+componentDidMount() {
+  this.props.dispatch(getPostIts())
+}
 
 const PostIts = ({postits, toggleform, dispatch}) => (
   <div>

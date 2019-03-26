@@ -53,11 +53,11 @@ class PostItForm extends React.Component {
               onChange={this.handleChange}
               defaultValue={color}
             >
-              <option value="#deff00">Yellow</option>
-              <option value="#03ff00">Green</option>
-              <option value="#8500ff">Purple</option>
-              <option value="#00cdff">Blue</option>
-              <option value="#ff00bc">Pink</option>
+              <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
+              <option value="purple">Purple</option>
+              <option value="blue">Blue</option>
+              <option value="pink">Pink</option>
             </select>
           </label>
           <br />
