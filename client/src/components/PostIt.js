@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-const PostIt = ({id, note, dispatch}) => (
+const PostIt = ({note, color, important, dispatch}) => (
   <Container>
     <NoiceDiv>
       <h4>{note}</h4>
@@ -13,7 +13,7 @@ const PostIt = ({id, note, dispatch}) => (
       <ActionButts>
         <FontAwesomeIcon icon="edit" />
       </ActionButts>
-      <ActionButts onClick={() => dispatch({type: 'DELETE_POSTIT', id})}>
+      <ActionButts>
         <FontAwesomeIcon icon="trash-alt" color="red" />
       </ActionButts>
     </ButtDiv>
@@ -25,10 +25,11 @@ const NoiceDiv = styled.div`
   text-align: center;
   padding: 5px;
   border: solid 1px black
-  background: #deff00;
   width: 233px;
   height: 233px;
-`;
+  background: ${props => props.color};
+  `;
+
 const ButtDiv = styled.div`
   text-align: right;
 `;

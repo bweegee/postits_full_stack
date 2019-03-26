@@ -1,2 +1,0 @@
-class PostIt < ApplicationRecord
-end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostItTest < ActiveSupport::TestCase
+class PostitTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

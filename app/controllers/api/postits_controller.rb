@@ -38,7 +38,7 @@ class Api::PostitsController < ApplicationController
   end
 
   def postit_params
-    params.require(:postit).permit(:note, :color, :immportant)
+    params.require(:postit).permit(:note, :color, :important)
   end
 
 end

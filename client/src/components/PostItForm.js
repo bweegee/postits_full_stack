@@ -5,7 +5,7 @@ import { addPostIt, updatePostIt, } from '../reducers/postits'
 class PostItForm extends React.Component {
   initialState = {
     note: '',
-    color: 'yellow',
+    color: '#deff00',
     important: false,
   }
   state = {...this.initialState};
@@ -28,7 +28,7 @@ class PostItForm extends React.Component {
     this.setState({ [name]: value, });
   };
 
-  handleClickChange = e => {
+  handleCheckChange = e => {
     this.setState({ important: !this.state.important })
   }
 
@@ -40,32 +40,35 @@ class PostItForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <textarea
             type="textArea"
-            value={note}
+            name="note"
             onChange={this.handleChange}
             label="Note"
+            defaultValue={note}
           />
           <br />
           <label>
             Pick a color:
             <select
-              name={color}
+              name="color"
               onChange={this.handleChange}
-              value={this.state.color}
+              defaultValue={color}
             >
-              <option value="green">Green</option>
-              <option value="purple">Purple</option>
-              <option value="blue">Blue</option>
-              <option value="pink">Pink</option>
+              <option value="#deff00">Yellow</option>
+              <option value="#03ff00">Green</option>
+              <option value="#8500ff">Purple</option>
+              <option value="#00cdff">Blue</option>
+              <option value="#ff00bc">Pink</option>
             </select>
           </label>
           <br />
           <label>
             Important:
             <input
-              name={ important }
+              name="important"
               type="checkbox"
               checked={this.state.important}
-              onChange={this.handleClickChange}
+              onChange={this.handleCheckChange}
+              defaultValue={important}
             />
           </label>
           <br />
