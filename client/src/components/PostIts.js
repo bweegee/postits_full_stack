@@ -13,9 +13,11 @@ class PostIts extends React.Component {
 
   postit = () => {
     return this.props.postits.map( p =>
+    <div>
     <NoiceDiv bg={p.color} key={p.id}>
       <h4>{p.note}</h4>
       <br />
+    </NoiceDiv>
     <ButtDiv>
       <ActionButts>
         <FontAwesomeIcon icon="edit" />
@@ -24,7 +26,7 @@ class PostIts extends React.Component {
         <FontAwesomeIcon icon="trash-alt" color="red" />
       </ActionButts>
     </ButtDiv>
-    </NoiceDiv>
+    </div>
     )
   };
 
@@ -38,7 +40,7 @@ class PostIts extends React.Component {
         <NoiceHeader>Your PostIts</NoiceHeader>
         <br />
         <Grid>
-          {this.postit}
+          {this.postit()}
         </Grid>
       </div>
     )
